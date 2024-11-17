@@ -9,6 +9,14 @@ import os
 #aaaaa
 app = FastAPI()
 
+DBHOST = "ds2022.cqee4iwdcaph.us-east-1.rds.amazonaws.com"
+DBUSER = "admin"
+DBPASS = os.getenv('DBPASS')
+DB = "xdw9vp"
+
+db = mysql.connector.connect(user=DBUSER, host=DBHOST, password=DBPASS, database=DB)
+cur=db.cursor()
+
 @app.get("/")  # zone apex
 def zone_apex():
     return {"Hello": "Hello API"}
