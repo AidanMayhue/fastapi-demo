@@ -28,3 +28,20 @@ def add(a: int, b: int):
 @app.get("/square/{a}/")
 def square(a: int):
     return {"square": a * a}
+
+@app.route('/genres', methods=['GET'], cors=True)
+def get_genres():
+    query = "SELECT * FROM genres ORDER BY genreid;"
+    try:    
+        cur.execute(query)
+        headers=[x[0] for x in cur.description]
+        results = cur.fetchall()
+        json_data=[]
+        for result in results:
+            json_data.append(dict(zip(headers,result)))
+        output = json.dumps(json_data)
+        return(output)
+    except mysql.connector.Error as e:
+        print("MySQL Error: ", str(e))
+        return None
+    cur.close()
