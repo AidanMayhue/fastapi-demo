@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import mysql.connector
 from fastapi import FastAPI
 from typing import Optional
 from pydantic import BaseModel
