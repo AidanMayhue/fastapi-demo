@@ -2,17 +2,14 @@
 <<<<<<< HEAD
 
 from fastapi import FastAPI ,Request
-=======
 import mysql.connector
 from fastapi import FastAPI
->>>>>>> db26ff669f9c2b5471f6a4c107ecf185285a1d79
 from typing import Optional
 from pydantic import BaseModel
 import json
 import os
 import pandas as pd
-#a
-#aaaaa
+
 app = FastAPI()
 
 DBHOST = "ds2022.cqee4iwdcaph.us-east-1.rds.amazonaws.com"
