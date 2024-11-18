@@ -35,23 +35,6 @@ def add(a: int, b: int):
 def square(a: int):
     return {"square": a * a}
 
-<<<<<<< HEAD
-@app.get("/customer/{idx}")
-def customer(idx: int):
-    df = pd.read_csv("../customers.csv")
-    customer = df.iloc[idx]
-    return customer.to_dict()
-
-@app.post("/get_body")
-async def get_body(request: Request):
-    response = await request.json()
-    first_name = response["fname"]
-    last_name = response["lname"]
-    favorite_number = response["favnu"]
-    return {"first_name": first_name, "last_name": last_name, "favorite_number": favorite_number}
-
-=======
->>>>>>> db26ff669f9c2b5471f6a4c107ecf185285a1d79
 @app.route('/genres', methods=['GET'], cors=True)
 def get_genres():
     query = "SELECT * FROM genres ORDER BY genreid;"
