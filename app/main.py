@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-<<<<<<< HEAD
+
 
 from fastapi import FastAPI ,Request
 import mysql.connector
