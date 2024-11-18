@@ -1,24 +1,27 @@
 #!/usr/bin/env python3
 
 
-from fastapi import FastAPI ,Request
-import mysql.connector
 from fastapi import FastAPI
 from typing import Optional
 from pydantic import BaseModel
 import json
 import os
 import pandas as pd
+import mysql.connector
 
-app = FastAPI()
+
 
 DBHOST = "ds2022.cqee4iwdcaph.us-east-1.rds.amazonaws.com"
 DBUSER = "admin"
 DBPASS = os.getenv('DBPASS')
 DB = "xdw9vp"
 
+
+
 db = mysql.connector.connect(user=DBUSER, host=DBHOST, password=DBPASS, database=DB)
 cur=db.cursor()
+
+app = FastAPI()
 
 @app.get("/")  # zone apex
 def zone_apex():
