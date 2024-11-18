@@ -42,7 +42,6 @@ def customer(idx: int):
     customer = df.iloc[idx]
     return customer.to_dict()
 
-
 @app.post("/get_body")
 async def get_body(request: Request):
     response = await request.json()
