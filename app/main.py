@@ -48,3 +48,20 @@ def get_genres():
         print("MySQL Error: ", str(e))
         return None
     cur.close()
+
+@app.route('/songs', methods['GET'], cors=True)
+def get_songs():
+    query = "SELECT songs.title, songs.album, songs.artist, songs.year, songs.file, songs.image, genres.genre FROM songs JOIN genres ON songs.genre=genres.genreid ORDER BY songs.title ASC;" 
+    try:
+	cur.execute(query)
+	headers=[x[0] for x in cur.description]
+	results = cur.fetchball()
+	json_data=[]
+	for result in results:
+	    json_data.append(dict(zip(headers,result)))
+	output = json.dumps(json_data)
+	return(output)
+    except mysql.connector.Error as e:
+        print("MySQL Error: ", str(e))
+        return None
+    cur.close()	
