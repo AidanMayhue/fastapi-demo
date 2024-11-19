@@ -18,7 +18,7 @@ DB = "xdw9vp"
 
 
 
-db = mysql.connector.connect(user=DBUSER, host=DBHOST, password=DBPASS, database=DB)
+db = mysql.connector.connect(user=DBUSER, host=DBHOST, password=DBPASS, database=DB, autocommit = True)
 cur=db.cursor()
 
 app = FastAPI()
