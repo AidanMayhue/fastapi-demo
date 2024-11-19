@@ -22,7 +22,13 @@ db = mysql.connector.connect(user=DBUSER, host=DBHOST, password=DBPASS, database
 cur=db.cursor()
 
 app = FastAPI()
-
+from fastapi.middleware.cors import CORSMiddleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 @app.get("/")  # zone apex
 def zone_apex():
     return {"Hello": "Hello API"}
@@ -35,7 +41,7 @@ def add(a: int, b: int):
 def square(a: int):
     return {"square": a * a}
 
-@app.get('/genres', methods=['GET'], cors=True)
+@app.get('/genres')
 def get_genres():
     query = "SELECT * FROM genres ORDER BY genreid;"
     try:    
@@ -50,7 +56,6 @@ def get_genres():
     except mysql.connector.Error as e:
         print("MySQL Error: ", str(e))
         return None
-    cur.close()
 
 @app.get('/songs')
 def get_songs():
@@ -67,4 +72,3 @@ def get_songs():
     except mysql.connector.Error as e:
         print("MySQL Error: ", str(e))
         return None
-    cur.close()
