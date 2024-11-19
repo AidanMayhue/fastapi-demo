@@ -52,7 +52,7 @@ def get_genres():
         return None
     cur.close()
 
-@app.get('/songs', methods=['GET'], cors=True)
+@app.get('/songs')
 def get_songs():
     query = "SELECT songs.title, songs.album, songs.artist, songs.year, songs.file, songs.image, genres.genre FROM songs JOIN genres ON songs.genre=genres.genreid ORDER BY songs.title ASC;" 
     try:    
