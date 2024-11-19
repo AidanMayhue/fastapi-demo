@@ -51,8 +51,7 @@ def get_genres():
         json_data=[]
         for result in results:
             json_data.append(dict(zip(headers,result)))
-        output = json.dumps(json_data)
-        return(output)
+        return(json_data)
     except mysql.connector.Error as e:
         print("MySQL Error: ", str(e))
         return None
@@ -67,8 +66,7 @@ def get_songs():
         json_data=[]
         for result in results:
             json_data.append(dict(zip(headers,result)))
-        output = json.dumps(json_data)
-        return(output)
+        return(json_data)
     except mysql.connector.Error as e:
         print("MySQL Error: ", str(e))
         return None
