@@ -6,7 +6,6 @@ from typing import Optional
 from pydantic import BaseModel
 import json
 import os
-import pandas as pd
 import mysql.connector
 from mysql.connector import Error
 
