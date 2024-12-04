@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-#Aidan Mayhue
 
 from fastapi import FastAPI
 from typing import Optional
